@@ -1,4 +1,6 @@
-export const data = [
+import { IAnimeItem } from "@/@types/IAnimeItem";
+
+export const data: IAnimeItem[] = [
 	{
 		id: "1",
 		name: "bleach",
