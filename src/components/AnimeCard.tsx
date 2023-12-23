@@ -1,5 +1,15 @@
 import { IAnimeItem } from "@/@types/IAnimeItem";
 import Image from "next/image";
+import { MotionDiv } from "./MotionDiv";
+
+interface AnimeCardProps {
+	index: number;
+}
+
+const variants = {
+	hidden: { opacity: 0 },
+	visible: { opacity: 1 },
+};
 
 export function AnimeCard({
 	episodes,
@@ -8,12 +18,24 @@ export function AnimeCard({
 	kind,
 	name,
 	score,
-}: IAnimeItem) {
+	index,
+}: IAnimeItem & AnimeCardProps) {
 	return (
-		<article className="max-w-sm rounded relative w-full">
+		<MotionDiv
+			className="max-w-sm rounded relative w-full"
+			variants={variants}
+			initial="hidden"
+			animate="visible"
+			transition={{
+				duration: 0.5,
+				delay: index * 0.25,
+				ease: "easeInOut",
+			}}
+			viewport={{ amount: 0 }}
+		>
 			<div className="relative w-full h-[37vh]">
 				<Image
-					src={image.original}
+					src={`https://shikimori.one${image.original}`}
 					alt={name}
 					fill
 					className="rounded-xl"
@@ -55,6 +77,6 @@ export function AnimeCard({
 					</div>
 				</div>
 			</div>
-		</article>
+		</MotionDiv>
 	);
 }

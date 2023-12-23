@@ -6,6 +6,7 @@ const nextConfig = {
 			"static.wikia.nocookie.net",
 			"flxt.tmsimg.com",
 			"i.pinimg.com",
+			"shikimori.one",
 		],
 	},
 };
